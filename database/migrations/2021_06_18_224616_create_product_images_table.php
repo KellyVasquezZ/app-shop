@@ -20,7 +20,7 @@ class CreateProductImagesTable extends Migration
             $table->boolean('featured')->default(false);
 
             // Llave foranea o FK
-            $table->integer('product_id')->unsigned()->nullable();
+            $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products');
 
             $table->timestamps();
