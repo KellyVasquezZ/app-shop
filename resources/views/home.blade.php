@@ -1,23 +1,41 @@
 @extends('layouts.app')
 
+@section('body-class', 'product-page')
+@section('title', 'App Shop | Dashboard')
+
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+<div class="header header-filter" style="background-image: url('https://images.unsplash.com/photo-1423655156442-ccc11daa4e99?crop=entropy&dpr=2&fit=crop&fm=jpg&h=750&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1450');">
+</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<div class="main main-raised">
+    <div class="container">
+        <div class="section">
+            <h2 class="title text-center">Dashboard</h2>
 
-                    {{ __('You are logged in!') }}
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
                 </div>
-            </div>
+            @endif
+
+            <ul class="nav nav-pills nav-pills-primary" role="tablist">
+                <li>
+                    <a href="#dashboard" role="tab" data-toggle="tab">
+                        <i class="material-icons">shopping_cart</i>
+                        Carrito de Compras
+                    </a>
+                </li>
+                <li>
+                    <a href="#tasks" role="tab" data-toggle="tab">
+                        <i class="material-icons">list</i>
+                        Pedidos Realizados
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
+
 </div>
+
+@include('includes.footer')
 @endsection

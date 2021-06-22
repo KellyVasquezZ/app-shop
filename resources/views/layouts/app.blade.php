@@ -52,17 +52,25 @@
                                 {{ Auth::user()->name }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                    {{ __('Desconectarse') }}
-                                </a>
+                            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if (auth()->user()->admin)
+								<li>
+									<a href="{{ url('/admin/products') }}">Gestionar productos</a>
+								</li>
+								@endif
+                                <li>
+									<a class="dropdown-item" href="{{ route('logout') }}"
+										onclick="event.preventDefault();
+														document.getElementById('logout-form').submit();">
+										{{ __('Desconectarse') }}
+									</a>
+								</li>
+								
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     {{ csrf_field() }}
                                 </form>
-                            </div>
+                            </ul>
                         </li>
                     @endguest
         		</ul>
